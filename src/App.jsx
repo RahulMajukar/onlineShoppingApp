@@ -6,6 +6,7 @@ import About from './pages/About'
 import Blog from './pages/Blog'
 import Contacts from './pages/Contacts'
 import NoPageFound from './pages/NoPageFound'
+import ProductDetail from './pages/ProductDetail'
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blog />} />
             <Route path="/contact" element={<Contacts />} />
+            <Route path="/product/:productId" element={<ProductDetail/>} />
             <Route path="*" element={<NoPageFound />} />
           </Routes>
 

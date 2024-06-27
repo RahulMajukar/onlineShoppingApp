@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './NavBar.css'
 import { NavLink } from 'react-router-dom'
+import Login from './login/Login';
 const NavBar = () => {
     const [isLogin, setIsLogin] = useState(false);
 
@@ -11,7 +12,6 @@ const NavBar = () => {
     const handleOpen = () => {
         setIsLogin(true);
     };
-
 
     return (
         <div>
@@ -36,10 +36,9 @@ const NavBar = () => {
             </nav>
 
             <Modal isOpen={isLogin} onClose={handleClose}>
-                <>
-                    <h1>Login</h1>
-                    <h3>A computer science portal!</h3>
-                </>
+               
+                    <Login/>
+            
             </Modal>
 
         </div>
@@ -54,37 +53,36 @@ export default NavBar
 // Modal.js
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
-
+  
     return (
+      <div
+        onClick={onClose}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+        //   height: "100%",
+          background: "rgba(0, 0, 0, 0.5)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <div
-            onClick={onClose}
-            style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                background: "rgba(0, 0, 0, 0.5)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
+          onClick={e => e.stopPropagation()} // Prevent closing modal when clicking inside
+          style={{
+            background: "white",
+            width: "400px", // Adjust size as needed
+            padding: "20px",
+            borderRadius: "10px",
+            
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+          }}
         >
-            <div
-                style={{
-                    background: "white",
-                    height: 150,
-                    width: 240,
-                    margin: "auto",
-                    padding: "2%",
-                    border: "2px solid #000",
-                    borderRadius: "10px",
-                    boxShadow: "2px solid black",
-                }}
-            >
-                {children}
-            </div>
+          {children}
         </div>
+      </div>
     );
-};
+  };
 
