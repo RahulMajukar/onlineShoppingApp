@@ -1,0 +1,18 @@
+.cart-offcanvas .offcanvas-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.offcanvas-footer {
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}

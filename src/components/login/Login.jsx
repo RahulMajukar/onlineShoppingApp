@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { UserContext } from '../../context/UserContext';
+
 
 const Login = ({ show, handleClose }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('mor_2314');
+  const [password, setPassword] = useState('83r5^_');
   const [error, setError] = useState(null);
+
+  const { login } = useContext(UserContext);
 
   const handleLogin = () => {
     fetch('https://fakestoreapi.com/auth/login', {
@@ -27,6 +31,8 @@ const Login = ({ show, handleClose }) => {
       })
       .then(json => {
         console.log(json);
+        login({ token: json.token, username });
+        // localStorage.setItem('userToken', json.token); //Store the token in localStorage
         handleClose();
       })
       .catch(err => {
@@ -50,6 +56,7 @@ const Login = ({ show, handleClose }) => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               autoFocus
+
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPassword">

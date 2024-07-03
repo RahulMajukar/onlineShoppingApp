@@ -7,20 +7,23 @@ import Blog from './pages/Blog'
 import Contacts from './pages/Contacts'
 import NoPageFound from './pages/NoPageFound'
 import ProductDetail from './pages/ProductDetail'
+import { UserProvider } from './context/UserContext'
 const App = () => {
   return (
-    <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blogs" element={<Blog />} />
-            <Route path="/contact" element={<Contacts />} />
-            <Route path="/product/:productId" element={<ProductDetail/>} />
-            <Route path="*" element={<NoPageFound />} />
-          </Routes>
+    <UserProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/contact" element={<Contacts />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="*" element={<NoPageFound />} />
+        </Routes>
 
       </BrowserRouter>
+    </UserProvider>
   )
 }
 
