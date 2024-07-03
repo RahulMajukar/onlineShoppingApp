@@ -8,6 +8,8 @@ import Contacts from './pages/Contacts'
 import NoPageFound from './pages/NoPageFound'
 import ProductDetail from './pages/ProductDetail'
 import { UserProvider } from './context/UserContext'
+import './App.css'
+
 const App = () => {
   return (
     <UserProvider>

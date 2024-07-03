@@ -47,7 +47,7 @@ const NavBar = () => {
               <li className='fr' >
                 <div className='navBtn' onClick={handleShowCart}>
                   <RiShoppingCart2Line />
-                  <Badge bg="secondary">9</Badge>
+                  <Badge bg="info">9</Badge>
                 </div>
               </li>
 
